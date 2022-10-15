@@ -20,12 +20,13 @@ dend = dendrogram(w_link,
                  truncate_mode='lastp',
                  p = 10,
                  )
-#plt.show()
-#clusters = fcluster(w_link, 3, criterion='maxclust')
 cluster = AgglomerativeClustering(n_clusters=3, affinity='euclidean', linkage='ward')
 plt.figure(figsize=(10, 7))
 print(cluster.fit_predict(data_scaled))
+plt.title("Customer_Segmentation")
 plt.scatter(data_scaled['vitaminC'], data_scaled['Fibre'], c=cluster.labels_)
+plt.draw()
+plt.savefig("scatter.jpg")
 plt.show()
 clusters = fcluster(w_link, 3, criterion='maxclust')
 clusters
