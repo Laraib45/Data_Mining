@@ -1,3 +1,5 @@
+""" Customer Segmentation based on the Nutrients """
+
 from matplotlib import pyplot as plt
 import pandas as pd
 from scipy.cluster.hierarchy import dendrogram, linkage, fcluster
@@ -26,10 +28,10 @@ print(cluster.fit_predict(data_scaled))
 plt.title("Customer_Segmentation")
 plt.scatter(data_scaled['vitaminC'], data_scaled['Fibre'], c=cluster.labels_)
 plt.draw()
-plt.savefig("scatter.jpg")
+plt.savefig("scatter.jpg") #Saving the scatter plot as image
 plt.show()
 clusters = fcluster(w_link, 3, criterion='maxclust')
 clusters
-df['clusters'] = clusters
+df['clusters'] = clusters # Creating new column as cluster and adding the value
 print(df.head(10))
-df.to_csv('solved_cluster_nutrient.csv')
+df.to_csv('solved_cluster_nutrient.csv') #Saving the analysed file
